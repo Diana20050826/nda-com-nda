@@ -1,0 +1,1434 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>GymDi - Treino de Glúteos e Pernas Ultra-Premium</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: 'var(--color-brand-50, #fff1f2)',
+                            100: 'var(--color-brand-100, #ffe4e6)',
+                            400: 'var(--color-brand-400, #fb7185)',
+                            500: 'var(--color-brand-500, #f43f5e)',
+                            600: 'var(--color-brand-600, #e11d48)',
+                            700: 'var(--color-brand-700, #be123c)',
+                            900: 'var(--color-brand-900, #881337)',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    animation: {
+                        'pulse-glow': 'pulseGlow 2s infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(244, 63, 94, 0.4)' },
+                            '50%': { boxShadow: '0 0 30px rgba(244, 63, 94, 0.8)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        :root {
+            --color-brand-50: #fff1f2;
+            --color-brand-100: #ffe4e6;
+            --color-brand-400: #fb7185;
+            --color-brand-500: #f43f5e;
+            --color-brand-600: #e11d48;
+            --color-brand-700: #be123c;
+            --color-brand-900: #881337;
+        }
+
+        /* Glassmorphism & Custom styling */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .dark .glass-panel {
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .dark .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Smooth scroll & Scrollbars */
+        html { scroll-behavior: smooth; }
+        ::-webkit-scrollbar { width: 5px; height: 5px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--color-brand-500); border-radius: 999px; }
+        
+        /* Hide scrollbars for clean app look */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-slate-100 dark:bg-slate-950 text-slate-900 dark:text-slate-100 font-sans min-h-screen flex flex-col antialiased transition-colors duration-300 select-none overflow-x-hidden">
+
+    <!-- APP LOCK SCREEN (PIN: 2631) -->
+    <div id="app-lock-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-slate-950 text-white p-6 transition-opacity duration-500">
+        <!-- Background Ambient Glow -->
+        <div class="absolute w-96 h-96 bg-brand-600/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="w-full max-w-sm text-center relative z-10 space-y-6">
+            <div class="relative w-24 h-24 mx-auto">
+                <div class="absolute inset-0 bg-brand-500 rounded-3xl blur-xl opacity-60 animate-pulse"></div>
+                <div class="relative w-24 h-24 bg-gradient-to-tr from-brand-700 via-brand-500 to-rose-400 rounded-3xl flex items-center justify-center shadow-2xl border border-white/20">
+                    <i class="fa-solid fa-crown text-4xl text-white"></i>
+                </div>
+            </div>
+
+            <div>
+                <h1 class="text-3xl font-black tracking-tight bg-gradient-to-r from-white via-slate-200 to-brand-400 bg-clip-text text-transparent">GymDi Pro</h1>
+                <p class="text-slate-400 text-xs mt-1 font-medium">Treino em Casa de Pernas & Glúteos</p>
+            </div>
+
+            <!-- PIN Display Dots -->
+            <div id="pin-dots" class="flex justify-center gap-4 py-2">
+                <div class="w-4 h-4 rounded-full border-2 border-brand-500/50 bg-transparent transition-all duration-300"></div>
+                <div class="w-4 h-4 rounded-full border-2 border-brand-500/50 bg-transparent transition-all duration-300"></div>
+                <div class="w-4 h-4 rounded-full border-2 border-brand-500/50 bg-transparent transition-all duration-300"></div>
+                <div class="w-4 h-4 rounded-full border-2 border-brand-500/50 bg-transparent transition-all duration-300"></div>
+            </div>
+
+            <!-- Numpad -->
+            <div class="grid grid-cols-3 gap-3 max-w-[280px] mx-auto pt-2">
+                <button onclick="pressPin('1')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">1</button>
+                <button onclick="pressPin('2')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">2</button>
+                <button onclick="pressPin('3')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">3</button>
+                <button onclick="pressPin('4')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">4</button>
+                <button onclick="pressPin('5')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">5</button>
+                <button onclick="pressPin('6')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">6</button>
+                <button onclick="pressPin('7')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">7</button>
+                <button onclick="pressPin('8')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">8</button>
+                <button onclick="pressPin('9')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">9</button>
+                <button onclick="clearPin()" class="h-16 rounded-2xl bg-slate-900/40 text-slate-400 active:scale-90 text-xs font-semibold uppercase tracking-wider transition flex items-center justify-center">Limpar</button>
+                <button onclick="pressPin('0')" class="h-16 rounded-2xl bg-slate-900/90 border border-slate-800 hover:border-brand-500/50 active:scale-90 text-2xl font-bold transition flex items-center justify-center">0</button>
+                <button onclick="deletePin()" class="h-16 rounded-2xl bg-slate-900/40 text-slate-400 active:scale-90 text-xl transition flex items-center justify-center"><i class="fa-solid fa-backspace"></i></button>
+            </div>
+            <p id="pin-error" class="text-rose-400 text-xs font-semibold hidden animate-bounce">PIN de Acesso Incorreto</p>
+        </div>
+    </div>
+
+    <!-- MAIN WRAPPER CONTAINER -->
+    <div id="main-app" class="hidden min-h-screen flex flex-col md:flex-row w-full max-w-7xl mx-auto relative">
+        
+        <!-- SIDEBAR FOR DESKTOP SCREEN -->
+        <aside class="hidden md:flex flex-col w-64 glass-panel border-r border-slate-200 dark:border-slate-800 p-6 space-y-8 sticky top-0 h-screen z-30">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-brand-600 to-rose-400 flex items-center justify-center text-white font-bold shadow-lg shadow-brand-500/30">
+                    <i class="fa-solid fa-crown text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="font-extrabold text-lg text-slate-900 dark:text-white leading-none">GymDi</h2>
+                    <span class="text-[10px] font-bold text-brand-500 uppercase tracking-widest">Pro Edition</span>
+                </div>
+            </div>
+
+            <nav class="flex-1 space-y-2">
+                <button onclick="switchTab('home')" id="snav-home" class="snav-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-sm transition text-brand-600 dark:text-brand-400 bg-brand-50 dark:bg-brand-900/20">
+                    <i class="fa-solid fa-fire text-lg w-6"></i> Dashboard
+                </button>
+                <button onclick="switchTab('custom')" id="snav-custom" class="snav-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-sm transition text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800/50">
+                    <i class="fa-solid fa-plus-circle text-lg w-6"></i> Criar Treino
+                </button>
+                <button onclick="switchTab('nutrition')" id="snav-nutrition" class="snav-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-sm transition text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800/50">
+                    <i class="fa-solid fa-utensils text-lg w-6"></i> Nutrição & Receitas
+                </button>
+                <button onclick="switchTab('stretch')" id="snav-stretch" class="snav-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-sm transition text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800/50">
+                    <i class="fa-solid fa-person-stretching text-lg w-6"></i> Mobilidade
+                </button>
+                <button onclick="switchTab('chat')" id="snav-chat" class="snav-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-sm transition text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800/50">
+                    <i class="fa-solid fa-robot text-lg w-6"></i> GymDi AI
+                </button>
+                <button onclick="switchTab('calendar')" id="snav-calendar" class="snav-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-sm transition text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800/50">
+                    <i class="fa-solid fa-chart-line text-lg w-6"></i> Progresso
+                </button>
+                <button onclick="switchTab('profile')" id="snav-profile" class="snav-btn w-full flex items-center gap-3 px-4 py-3 rounded-2xl font-bold text-sm transition text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800/50">
+                    <i class="fa-solid fa-user-gear text-lg w-6"></i> Perfil
+                </button>
+            </nav>
+        </aside>
+
+        <!-- MAIN CONTENT AREA -->
+        <main class="flex-1 p-4 md:p-8 space-y-8 overflow-y-auto pb-24 md:pb-8">
+
+            <!-- HEADER BAR -->
+            <header class="flex justify-between items-center bg-slate-900/40 p-4 rounded-3xl border border-slate-800 backdrop-blur-md">
+                <div class="flex items-center gap-3">
+                    <img id="nav-user-photo" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" class="w-11 h-11 rounded-full object-cover ring-2 ring-brand-500 shadow-md">
+                    <div>
+                        <span class="text-[10px] text-slate-400 font-extrabold uppercase tracking-wider block">Benvinda de volta</span>
+                        <h3 class="font-extrabold text-sm md:text-base text-slate-900 dark:text-white leading-tight" id="nav-user-name">Guerreira GymDi</h3>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-2">
+                    <button onclick="openVaultLockModal()" class="w-10 h-10 rounded-2xl glass-card flex items-center justify-center text-brand-500 hover:scale-105 transition shadow-sm" title="Cofre Privado">
+                        <i class="fa-solid fa-shield-halved text-base"></i>
+                    </button>
+                    <button onclick="toggleDarkMode()" class="w-10 h-10 rounded-2xl glass-card flex items-center justify-center hover:scale-105 transition shadow-sm">
+                        <i id="dark-icon" class="fa-solid fa-sun text-amber-400 text-base"></i>
+                    </button>
+                </div>
+            </header>
+
+            <!-- TAB 1: DASHBOARD & WORKOUT PLANNER -->
+            <section id="tab-home" class="tab-content space-y-6">
+                <!-- HERO BANNER -->
+                <div class="relative rounded-3xl overflow-hidden bg-gradient-to-r from-brand-900 via-brand-700 to-rose-600 text-white p-6 md:p-8 shadow-2xl">
+                    <div class="relative z-10 max-w-lg space-y-4">
+                        <span class="px-3 py-1 bg-white/20 backdrop-blur-md rounded-full text-[10px] font-extrabold uppercase tracking-widest text-rose-100 inline-block">Plano Explosivo Glúteos 3D</span>
+                        <h2 class="text-3xl md:text-4xl font-black leading-tight">Treino de Pernas & Glúteos de Alta Intensidade</h2>
+                        <p class="text-xs md:text-sm text-rose-100 font-medium">Programa desenhado para focar na ativação do Glúteo Máximo, Médio e Isquiotibiais em casa sem necessidade de máquinas.</p>
+                        <div class="pt-2 flex flex-wrap gap-3">
+                            <button onclick="startRoutine('glute_max')" class="px-6 py-3.5 bg-white text-brand-700 hover:bg-rose-50 font-black text-xs rounded-2xl shadow-xl transition active:scale-95 flex items-center gap-2">
+                                <i class="fa-solid fa-play"></i> Iniciar Treino Explosivo
+                            </button>
+                            <button onclick="scrollToSection('exercise-library')" class="px-5 py-3.5 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white font-extrabold text-xs rounded-2xl transition border border-white/20">
+                                Ver Exercícios
+                            </button>
+                        </div>
+                    </div>
+                    <i class="fa-solid fa-fire text-9xl absolute -right-6 -bottom-6 text-white/10 pointer-events-none"></i>
+                </div>
+
+                <!-- QUICK STATS COUNTERS -->
+                <div class="grid grid-cols-3 gap-3 md:gap-5">
+                    <div class="glass-card p-4 rounded-3xl border shadow-sm flex flex-col items-center text-center space-y-1">
+                        <i class="fa-solid fa-bolt text-brand-500 text-lg"></i>
+                        <span class="text-xs font-extrabold text-slate-400">Streak</span>
+                        <h4 id="stat-streak" class="text-xl font-black text-slate-900 dark:text-white">4 Dias</h4>
+                    </div>
+                    <div class="glass-card p-4 rounded-3xl border shadow-sm flex flex-col items-center text-center space-y-1">
+                        <i class="fa-solid fa-check-double text-emerald-500 text-lg"></i>
+                        <span class="text-xs font-extrabold text-slate-400">Concluídos</span>
+                        <h4 id="stat-completed" class="text-xl font-black text-slate-900 dark:text-white">14</h4>
+                    </div>
+                    <div class="glass-card p-4 rounded-3xl border shadow-sm flex flex-col items-center text-center space-y-1">
+                        <i class="fa-solid fa-fire-burner text-amber-500 text-lg"></i>
+                        <span class="text-xs font-extrabold text-slate-400">Calorias</span>
+                        <h4 id="stat-calories" class="text-xl font-black text-slate-900 dark:text-white">4200 kcal</h4>
+                    </div>
+                </div>
+
+                <!-- EXERCISE TUTORIAL GALLERY -->
+                <div id="exercise-library" class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-xl font-black text-slate-900 dark:text-white">Guia Ilustrado de Exercícios</h3>
+                        <span class="text-xs font-extrabold text-brand-500">Passo a Passo Visual</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-4" id="exercise-library-grid">
+                        <!-- Dynamic Rendered Exercises -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 2: CUSTOM WORKOUT BUILDER -->
+            <section id="tab-custom" class="tab-content hidden space-y-6">
+                <div class="glass-card p-6 md:p-8 rounded-3xl border shadow-lg space-y-6">
+                    <div>
+                        <h3 class="text-2xl font-black text-slate-900 dark:text-white flex items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-brand-500"></i> Criar o Teu Próprio Treino
+                        </h3>
+                        <p class="text-xs text-slate-400 mt-1">Monta sequências personalizadas e guarda na tua app.</p>
+                    </div>
+
+                    <form id="custom-workout-form" onsubmit="saveCustomWorkout(event)" class="space-y-5">
+                        <div>
+                            <label class="block text-xs font-extrabold uppercase tracking-wider text-slate-400 mb-2">Nome do Teu Plano</label>
+                            <input type="text" id="custom-title" placeholder="Ex: Treino Super Glúteo de Domingo" required class="w-full px-4 py-3.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 font-semibold">
+                        </div>
+
+                        <div id="custom-exercises-container" class="space-y-3">
+                            <!-- Dynamic Rows -->
+                        </div>
+
+                        <button type="button" onclick="addCustomExerciseRow()" class="w-full py-3 border-2 border-dashed border-slate-300 dark:border-slate-800 text-slate-600 dark:text-slate-300 font-extrabold rounded-2xl hover:bg-slate-50 dark:hover:bg-slate-900 transition text-xs flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-plus"></i> Adicionar Exercício
+                        </button>
+
+                        <button type="submit" class="w-full py-4 bg-brand-600 hover:bg-brand-700 text-white font-extrabold rounded-2xl transition shadow-xl shadow-brand-500/30 text-sm">
+                            Guardar Treino Personalizado
+                        </button>
+                    </form>
+                </div>
+
+                <div class="space-y-4">
+                    <h3 class="text-xl font-black text-slate-900 dark:text-white">Os Teus Treinos Criados</h3>
+                    <div id="saved-custom-workouts" class="space-y-3">
+                        <!-- Dynamic Custom Workouts List -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 3: NUTRITION & HYDRATION SUITE -->
+            <section id="tab-nutrition" class="tab-content hidden space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h3 class="text-2xl font-black text-slate-900 dark:text-white">Nutrição & Receitas de Alta Proteína</h3>
+                        <p class="text-xs text-slate-400">Nutrição focada em hipertrofia dos glúteos e recuperação rápida</p>
+                    </div>
+                    <!-- Macro Calc Modal Trigger -->
+                    <button onclick="toggleMacroCalcModal()" class="px-4 py-2.5 bg-brand-600 hover:bg-brand-700 text-white font-extrabold text-xs rounded-2xl shadow-lg transition flex items-center gap-2 self-start">
+                        <i class="fa-solid fa-calculator"></i> Calculadora de Macros & Proteína
+                    </button>
+                </div>
+
+                <!-- Hydration Tracker -->
+                <div class="bg-gradient-to-r from-cyan-600 to-blue-600 rounded-3xl p-6 text-white shadow-xl space-y-4 relative overflow-hidden">
+                    <div class="flex justify-between items-center relative z-10">
+                        <div>
+                            <span class="text-[10px] font-extrabold uppercase tracking-widest text-cyan-200">Hidratação Muscular</span>
+                            <h4 class="font-black text-2xl">Registo Diário de Água</h4>
+                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-2xl">
+                            <i class="fa-solid fa-droplet"></i>
+                        </div>
+                    </div>
+                    <div class="space-y-2 relative z-10">
+                        <div class="flex justify-between text-xs font-bold">
+                            <span>Progresso Hoje</span>
+                            <span id="water-text">1.5L / 2.5L</span>
+                        </div>
+                        <div class="w-full bg-white/20 h-4 rounded-full overflow-hidden p-0.5 backdrop-blur-md">
+                            <div id="water-bar" class="bg-white h-full rounded-full transition-all duration-500" style="width: 60%"></div>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2 relative z-10">
+                        <button onclick="addWater(0.25)" class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl text-xs font-extrabold backdrop-blur-md transition">+ 250 ml</button>
+                        <button onclick="addWater(0.50)" class="px-4 py-2 bg-white/20 hover:bg-white/30 rounded-xl text-xs font-extrabold backdrop-blur-md transition">+ 500 ml</button>
+                        <button onclick="resetWater()" class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-xl text-xs font-extrabold backdrop-blur-md transition">Reset</button>
+                    </div>
+                    <i class="fa-solid fa-water text-9xl absolute -right-6 -bottom-10 text-white/10 pointer-events-none"></i>
+                </div>
+
+                <!-- Recipe Category Filters -->
+                <div class="flex gap-2 overflow-x-auto no-scrollbar py-1">
+                    <button onclick="filterRecipes('all')" class="recipe-cat-btn px-4 py-2 rounded-2xl font-extrabold text-xs transition bg-brand-600 text-white shadow-md">Todas</button>
+                    <button onclick="filterRecipes('pre')" class="recipe-cat-btn px-4 py-2 rounded-2xl font-extrabold text-xs transition glass-card text-slate-500 hover:text-brand-500">Pré-Treino ⚡</button>
+                    <button onclick="filterRecipes('post')" class="recipe-cat-btn px-4 py-2 rounded-2xl font-extrabold text-xs transition glass-card text-slate-500 hover:text-brand-500">Pós-Treino 🍑</button>
+                    <button onclick="filterRecipes('snack')" class="recipe-cat-btn px-4 py-2 rounded-2xl font-extrabold text-xs transition glass-card text-slate-500 hover:text-brand-500">Snacks Rápidos 🍫</button>
+                    <button onclick="filterRecipes('veggie')" class="recipe-cat-btn px-4 py-2 rounded-2xl font-extrabold text-xs transition glass-card text-slate-500 hover:text-brand-500">Vegetariano 🌱</button>
+                </div>
+
+                <!-- Meal Cards Grid -->
+                <div class="grid md:grid-cols-2 gap-5" id="nutrition-cards-container">
+                    <!-- Dynamic Expanded Recipes -->
+                </div>
+            </section>
+
+            <!-- TAB 3.5: MOBILITY & STRETCHING GUIDE -->
+            <section id="tab-stretch" class="tab-content hidden space-y-6">
+                <div>
+                    <h3 class="text-2xl font-black text-slate-900 dark:text-white">Mobilidade de Anca & Libertações</h3>
+                    <p class="text-xs text-slate-400">Prepara as tuas articulações para agachar mais fundo e alivia a dor muscular pós-treino</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-5" id="mobility-cards-container">
+                    <!-- Mobility Exercises Rendered Dynamic -->
+                </div>
+            </section>
+
+            <!-- TAB 4: AI FITNESS CHAT -->
+            <section id="tab-chat" class="tab-content hidden space-y-4">
+                <div class="glass-card rounded-3xl p-5 border shadow-xl flex flex-col h-[75vh]">
+                    <!-- Chat Header -->
+                    <div class="flex items-center gap-3 border-b border-slate-200 dark:border-slate-800 pb-4">
+                        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-600 to-pink-500 flex items-center justify-center text-white text-xl font-bold shadow-lg shadow-brand-500/30">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-slate-900 dark:text-white leading-tight">GymDi AI Treinadora Virtual</h4>
+                            <span class="text-[10px] text-emerald-500 font-extrabold uppercase tracking-wider">● Online & Pronta a Ajudar</span>
+                        </div>
+                    </div>
+
+                    <!-- Chat Messages Container -->
+                    <div id="chat-messages" class="flex-1 overflow-y-auto space-y-4 py-4 text-xs md:text-sm">
+                        <div class="flex gap-3 max-w-[85%]">
+                            <div class="glass-card p-4 rounded-2xl text-slate-800 dark:text-slate-200 space-y-2 border">
+                                <p>Olá poderosa! Sou a tua assistente GymDi AI. Estou aqui para responder a todas as tuas dúvidas sobre a execução dos treinos de glúteos, dor muscular pós-treino ou plano de refeições!</p>
+                                <div class="pt-2 flex flex-wrap gap-2">
+                                    <button onclick="sendQuickPrompt('Como focar no Glúteo Médio em casa?')" class="px-3 py-1.5 bg-brand-500/10 hover:bg-brand-500/20 text-brand-500 font-extrabold rounded-xl text-[11px] transition">Glúteo Médio 🍑</button>
+                                    <button onclick="sendQuickPrompt('O que comer no pós-treino para crescer glúteos?')" class="px-3 py-1.5 bg-brand-500/10 hover:bg-brand-500/20 text-brand-500 font-extrabold rounded-xl text-[11px] transition">Pós-Treino 🥗</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat Input Form -->
+                    <form onsubmit="sendChatMessage(event)" class="flex gap-2 pt-3 border-t border-slate-200 dark:border-slate-800">
+                        <input type="text" id="chat-input" placeholder="Escreve a tua pergunta aqui..." required class="flex-1 px-4 py-3.5 bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 text-xs md:text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 font-semibold">
+                        <button type="submit" class="px-6 bg-brand-600 hover:bg-brand-700 text-white font-extrabold rounded-2xl transition shadow-lg shadow-brand-500/30 flex items-center justify-center">
+                            <i class="fa-solid fa-paper-plane text-sm"></i>
+                        </button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- TAB 5: CALENDAR & PROGRESS ANALYTICS -->
+            <section id="tab-calendar" class="tab-content hidden space-y-6">
+                <div class="glass-card p-6 rounded-3xl border shadow-lg space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h3 class="text-xl font-black text-slate-900 dark:text-white" id="calendar-month-year">Novembro 2026</h3>
+                            <p class="text-xs text-slate-400">Dias assinalados a rosa representam treinos concluídos</p>
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="prevMonth()" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-chevron-left"></i></button>
+                            <button onclick="nextMonth()" class="w-9 h-9 rounded-xl glass-card flex items-center justify-center text-xs font-bold"><i class="fa-solid fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-7 text-center text-xs font-extrabold text-slate-400 mb-2">
+                        <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
+                    </div>
+
+                    <div id="calendar-days-grid" class="grid grid-cols-7 gap-2 text-center text-sm font-extrabold">
+                        <!-- Dynamic Calendar -->
+                    </div>
+                </div>
+
+                <!-- Progress Charts Simulation -->
+                <div class="glass-card p-6 rounded-3xl border shadow-lg space-y-4">
+                    <h4 class="font-black text-slate-900 dark:text-white text-sm">Volume Semanal de Treino</h4>
+                    <div class="h-40 flex items-end justify-between gap-3 pt-6 px-2">
+                        <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-brand-500/20 rounded-t-xl h-[40%]"></div><span class="text-[10px] font-bold text-slate-400">Seg</span></div>
+                        <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-brand-500 rounded-t-xl h-[85%] shadow-lg shadow-brand-500/40"></div><span class="text-[10px] font-bold text-slate-400">Ter</span></div>
+                        <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-brand-500/20 rounded-t-xl h-[20%]"></div><span class="text-[10px] font-bold text-slate-400">Qua</span></div>
+                        <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-brand-500 rounded-t-xl h-[95%] shadow-lg shadow-brand-500/40"></div><span class="text-[10px] font-bold text-slate-400">Qui</span></div>
+                        <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-brand-500/20 rounded-t-xl h-[30%]"></div><span class="text-[10px] font-bold text-slate-400">Sex</span></div>
+                        <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-brand-500 rounded-t-xl h-[70%] shadow-lg shadow-brand-500/40"></div><span class="text-[10px] font-bold text-slate-400">Sáb</span></div>
+                        <div class="flex-1 flex flex-col items-center gap-2"><div class="w-full bg-brand-500/20 rounded-t-xl h-[10%]"></div><span class="text-[10px] font-bold text-slate-400">Dom</span></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TAB 6: PROFILE & CUSTOM THEMES -->
+            <section id="tab-profile" class="tab-content hidden space-y-6">
+                <div class="glass-card p-6 md:p-8 rounded-3xl border shadow-lg text-center space-y-5">
+                    <div class="relative w-28 h-28 mx-auto">
+                        <img id="profile-img-preview" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=200" class="w-28 h-28 rounded-full object-cover ring-4 ring-brand-500 shadow-xl">
+                        <label for="profile-upload" class="absolute bottom-0 right-0 w-9 h-9 bg-brand-600 text-white rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:scale-110 transition">
+                            <i class="fa-solid fa-camera text-xs"></i>
+                            <input type="file" id="profile-upload" accept="image/*" class="hidden" onchange="updateProfilePhoto(event)">
+                        </label>
+                    </div>
+
+                    <div>
+                        <input type="text" id="profile-name-input" value="Guerreira GymDi" onchange="updateProfileName(this.value)" class="text-2xl font-black text-center bg-transparent border-b-2 border-dashed border-slate-300 dark:border-slate-700 focus:outline-none focus:border-brand-500 text-slate-900 dark:text-white">
+                        <p class="text-xs text-slate-400 mt-1 font-semibold">Objetivo: Hipertrofia Glútea & Pernas Torneadas</p>
+                    </div>
+                </div>
+
+                <!-- Theme Accent Switcher -->
+                <div class="glass-card p-6 rounded-3xl border shadow-lg space-y-4">
+                    <h4 class="font-black text-slate-900 dark:text-white text-sm">Personalizar Tema de Cor da App</h4>
+                    <div class="flex flex-wrap gap-4 justify-center py-2">
+                        <button onclick="setThemeColor('rose', '#f43f5e', '#e11d48')" class="w-12 h-12 rounded-2xl bg-rose-500 shadow-lg hover:scale-110 transition flex items-center justify-center text-white"><i class="fa-solid fa-check"></i></button>
+                        <button onclick="setThemeColor('purple', '#a855f7', '#9333ea')" class="w-12 h-12 rounded-2xl bg-purple-500 shadow-lg hover:scale-110 transition"></button>
+                        <button onclick="setThemeColor('emerald', '#10b981', '#059669')" class="w-12 h-12 rounded-2xl bg-emerald-500 shadow-lg hover:scale-110 transition"></button>
+                        <button onclick="setThemeColor('cyan', '#06b6d4', '#0891b2')" class="w-12 h-12 rounded-2xl bg-cyan-500 shadow-lg hover:scale-110 transition"></button>
+                        <button onclick="setThemeColor('amber', '#f59e0b', '#d97706')" class="w-12 h-12 rounded-2xl bg-amber-500 shadow-lg hover:scale-110 transition"></button>
+                    </div>
+                </div>
+
+                <!-- Open Vault Button -->
+                <div class="bg-gradient-to-r from-brand-900/40 via-brand-600/30 to-brand-900/40 p-6 rounded-3xl border border-brand-500/30 text-center space-y-3 backdrop-blur-md">
+                    <i class="fa-solid fa-user-shield text-4xl text-brand-400"></i>
+                    <h4 class="font-black text-white text-base">Cofre de Evolução Privado</h4>
+                    <p class="text-xs text-slate-300">Registo fotográfico e métricas corporais protegidos por código PIN.</p>
+                    <button onclick="openVaultLockModal()" class="px-6 py-3 bg-brand-600 text-white font-extrabold text-xs rounded-2xl shadow-xl hover:bg-brand-700 transition">
+                        Abrir Cofre Protegido 🔒
+                    </button>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- MOBILE BOTTOM NAVBAR -->
+        <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 glass-panel border-t border-slate-200 dark:border-slate-800 px-3 py-2 flex justify-around items-center">
+            <button onclick="switchTab('home')" class="nav-btn flex flex-col items-center gap-1 text-brand-600 dark:text-brand-400 transition" id="nav-home">
+                <i class="fa-solid fa-house text-lg"></i>
+                <span class="text-[9px] font-extrabold uppercase">Início</span>
+            </button>
+            <button onclick="switchTab('custom')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-brand-500 transition" id="nav-custom">
+                <i class="fa-solid fa-plus-circle text-lg"></i>
+                <span class="text-[9px] font-extrabold uppercase">Criar</span>
+            </button>
+            <button onclick="switchTab('nutrition')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-brand-500 transition" id="nav-nutrition">
+                <i class="fa-solid fa-utensils text-lg"></i>
+                <span class="text-[9px] font-extrabold uppercase">Receitas</span>
+            </button>
+            <button onclick="switchTab('stretch')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-brand-500 transition" id="nav-stretch">
+                <i class="fa-solid fa-person-stretching text-lg"></i>
+                <span class="text-[9px] font-extrabold uppercase">Mobilidade</span>
+            </button>
+            <button onclick="switchTab('chat')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-brand-500 transition" id="nav-chat">
+                <i class="fa-solid fa-comments text-lg"></i>
+                <span class="text-[9px] font-extrabold uppercase">IA Chat</span>
+            </button>
+            <button onclick="switchTab('profile')" class="nav-btn flex flex-col items-center gap-1 text-slate-400 hover:text-brand-500 transition" id="nav-profile">
+                <i class="fa-solid fa-user-gear text-lg"></i>
+                <span class="text-[9px] font-extrabold uppercase">Perfil</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- MODAL 1: WORKOUT PLAYER -->
+    <div id="modal-workout" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 w-full max-w-md space-y-5 relative">
+            <button onclick="closeWorkoutModal()" class="absolute top-4 right-4 w-9 h-9 rounded-full bg-slate-800 text-slate-400 flex items-center justify-center hover:text-white">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="text-center space-y-1">
+                <span id="workout-current-muscle" class="text-[10px] font-extrabold text-brand-400 uppercase tracking-widest">Glúteo Máximo</span>
+                <h3 id="workout-current-name" class="text-2xl font-black">Hip Thrust</h3>
+            </div>
+
+            <img id="workout-current-img" src="" class="w-full h-48 object-cover rounded-2xl border border-slate-800 shadow-md">
+
+            <div class="bg-slate-950 rounded-2xl p-4 border border-slate-800 text-center space-y-2">
+                <span class="text-[10px] font-bold text-slate-400 uppercase">Tempo de Série / Descanso</span>
+                <div id="workout-timer-clock" class="text-4xl font-black text-brand-500 tracking-wider">00:45</div>
+                <div class="flex justify-center gap-2 pt-1">
+                    <button id="btn-timer-toggle" onclick="toggleWorkoutTimer()" class="px-4 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-bold rounded-xl transition">Pausar</button>
+                </div>
+            </div>
+
+            <div class="space-y-2">
+                <h4 class="text-xs font-extrabold text-slate-400 uppercase">Execução Recomendada:</h4>
+                <p id="workout-current-reps" class="text-sm font-bold text-brand-400"></p>
+                <p id="workout-current-instructions" class="text-xs text-slate-300 leading-relaxed"></p>
+            </div>
+
+            <button onclick="nextWorkoutExercise()" class="w-full py-4 bg-brand-600 hover:bg-brand-700 text-white font-extrabold rounded-2xl transition shadow-lg shadow-brand-500/30 flex items-center justify-center gap-2">
+                Próximo Exercício <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- MODAL 2: VAULT LOCK (PIN: 2005) -->
+    <div id="modal-vault-lock" class="fixed inset-0 z-50 bg-slate-950/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 w-full max-w-sm text-center space-y-5">
+            <div class="w-16 h-16 mx-auto bg-brand-500/20 border border-brand-500/40 rounded-2xl flex items-center justify-center text-brand-400 text-2xl">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            <div>
+                <h3 class="text-xl font-black">Cofre de Evolução</h3>
+                <p class="text-xs text-slate-400 mt-1">Digita o teu PIN de segurança privada</p>
+            </div>
+
+            <div id="vault-dots" class="flex justify-center gap-3 py-1">
+                <div class="w-4 h-4 rounded-full border-2 border-brand-500/50"></div>
+                <div class="w-4 h-4 rounded-full border-2 border-brand-500/50"></div>
+                <div class="w-4 h-4 rounded-full border-2 border-brand-500/50"></div>
+                <div class="w-4 h-4 rounded-full border-2 border-brand-500/50"></div>
+            </div>
+
+            <div class="grid grid-cols-3 gap-2.5 max-w-[240px] mx-auto">
+                <button onclick="pressVaultPin('1')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">1</button>
+                <button onclick="pressVaultPin('2')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">2</button>
+                <button onclick="pressVaultPin('3')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">3</button>
+                <button onclick="pressVaultPin('4')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">4</button>
+                <button onclick="pressVaultPin('5')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">5</button>
+                <button onclick="pressVaultPin('6')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">6</button>
+                <button onclick="pressVaultPin('7')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">7</button>
+                <button onclick="pressVaultPin('8')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">8</button>
+                <button onclick="pressVaultPin('9')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">9</button>
+                <button onclick="closeVaultLockModal()" class="h-14 rounded-xl bg-slate-800/40 text-slate-400 text-xs font-semibold">Sair</button>
+                <button onclick="pressVaultPin('0')" class="h-14 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold text-xl">0</button>
+                <button onclick="clearVaultPin()" class="h-14 rounded-xl bg-slate-800/40 text-slate-400 text-xs font-semibold">Limpar</button>
+            </div>
+            <p id="vault-error" class="text-rose-400 text-xs font-bold hidden">Código do Cofre Incorreto</p>
+        </div>
+    </div>
+
+    <!-- MODAL 3: VAULT CONTENT & PHOTO COMPARISON -->
+    <div id="modal-vault-content" class="fixed inset-0 z-50 bg-slate-950/95 backdrop-blur-md hidden flex items-center justify-center p-4 overflow-y-auto">
+        <div class="glass-card bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 w-full max-w-2xl space-y-6 my-auto max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center border-b border-slate-800 pb-4">
+                <div>
+                    <h3 class="text-xl font-black flex items-center gap-2"><i class="fa-solid fa-lock text-brand-400"></i> Cofre Privado de Evolução</h3>
+                    <p class="text-xs text-slate-400">Registo fotográfico e medidas de glúteos protegidas</p>
+                </div>
+                <button onclick="closeVaultContentModal()" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center text-slate-400 hover:text-white">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Upload Photo Section -->
+            <div class="glass-card bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-3">
+                <h4 class="font-extrabold text-xs text-brand-400 uppercase tracking-wider">Adicionar Nova Foto & Métricas</h4>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
+                    <input type="date" id="vault-photo-date" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-white">
+                    <input type="number" id="vault-weight" placeholder="Peso (kg)" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-white">
+                    <input type="number" id="vault-glute-cm" placeholder="Glúteo (cm)" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-white">
+                    <select id="vault-photo-angle" class="px-3 py-2 bg-slate-900 border border-slate-800 rounded-xl text-xs text-white">
+                        <option value="Costas">Visão Costas</option>
+                        <option value="Perfil">Visão Perfil</option>
+                        <option value="Frente">Visão Frente</option>
+                    </select>
+                </div>
+                <div class="flex gap-2 pt-1">
+                    <input type="file" id="vault-file-input" accept="image/*" class="text-xs text-slate-400 flex-1 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-xs file:font-semibold file:bg-brand-600 file:text-white hover:file:bg-brand-700">
+                    <button onclick="uploadVaultPhoto()" class="px-4 py-2 bg-brand-600 text-white font-extrabold text-xs rounded-xl hover:bg-brand-700 transition">Guardar</button>
+                </div>
+            </div>
+
+            <!-- Vault Gallery Grid -->
+            <div class="space-y-3">
+                <h4 class="font-extrabold text-xs text-slate-400 uppercase tracking-wider">Histórico de Fotos</h4>
+                <div id="vault-gallery-grid" class="grid grid-cols-2 md:grid-cols-3 gap-3">
+                    <!-- Dynamic Photos -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 4: MACRO CALCULATOR -->
+    <div id="modal-macro-calc" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="glass-card bg-slate-900 border border-slate-800 text-white rounded-3xl p-6 w-full max-w-md space-y-5">
+            <div class="flex justify-between items-center">
+                <h3 class="font-black text-xl flex items-center gap-2"><i class="fa-solid fa-calculator text-brand-500"></i> Calculadora de Hipertrofia</h3>
+                <button onclick="toggleMacroCalcModal()" class="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="space-y-3 text-xs">
+                <div>
+                    <label class="block text-slate-400 font-bold mb-1">Teu Peso Corporal (kg)</label>
+                    <input type="number" id="calc-weight" value="62" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white font-bold">
+                </div>
+                <div>
+                    <label class="block text-slate-400 font-bold mb-1">Objetivo Principal</label>
+                    <select id="calc-goal" class="w-full px-4 py-3 bg-slate-950 border border-slate-800 rounded-xl text-white font-bold">
+                        <option value="gain">Ganhos Máximos de Glúteo (Superávit Ligeiro)</option>
+                        <option value="recomp">Definir Pernas Mantendo Massa (Recomposição)</option>
+                    </select>
+                </div>
+                <button onclick="calculateMacros()" class="w-full py-3 bg-brand-600 hover:bg-brand-700 font-extrabold rounded-xl transition">Calcular Proteínas Diárias</button>
+            </div>
+
+            <div id="calc-results" class="hidden p-4 rounded-2xl bg-slate-950 border border-brand-500/40 text-center space-y-2">
+                <p class="text-[10px] font-extrabold text-brand-400 uppercase tracking-widest">A Tua Meta Proteica Recomendada</p>
+                <h4 id="res-protein" class="text-3xl font-black text-white">124g / dia</h4>
+                <p id="res-desc" class="text-xs text-slate-400">Distribui em 3-4 refeições com ~30g de proteína cada para otimizar o crescimento do glúteo.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT APP LOGIC -->
+    <script>
+        /* ==================== HIDDEN PIN CONFIG ==================== */
+        const APP_PIN = "2631";
+        const VAULT_CODE = "2005";
+        let currentEnteredPin = "";
+        let currentVaultPin = "";
+        let waterDrank = 1.5;
+        let waterGoal = 2.5;
+        let currentTab = 'home';
+
+        // Audio Synth Beep Sound Generator (No external MP3 required)
+        function playBeep(freq = 800, duration = 0.1) {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audioCtx.createOscillator();
+                const gain = audioCtx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.start();
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e){}
+        }
+
+        // Extended Recipes Data
+        const nutritionDB = [
+            {
+                id: 1,
+                title: "Panquecas Proteicas Fluffy de Canela",
+                category: "pre",
+                categoryLabel: "Pré-Treino ⚡",
+                img: "https://images.unsplash.com/photo-1528207776546-385fe093557e?auto=format&fit=crop&q=80&w=600",
+                calories: "340 kcal",
+                protein: "28g",
+                carbs: "42g",
+                fats: "6g",
+                prepTime: "12 min",
+                ingredients: ["35g Aveia Moída", "1 Ovo + 2 Claras", "1 scoop Whey Baunilha (ou Proteína Vegetal)", "1 colher café Canela", "1/2 Banana rodelas"],
+                desc: "Rica em hidratos de absorção lenta e proteína para garantir força máxima do início ao fim do treino de pernas."
+            },
+            {
+                id: 2,
+                title: "Bowl Anabólico de Skyr, Morangos & Mel",
+                category: "post",
+                categoryLabel: "Pós-Treino 🍑",
+                img: "https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&q=80&w=600",
+                calories: "290 kcal",
+                protein: "32g",
+                carbs: "35g",
+                fats: "2g",
+                prepTime: "5 min",
+                ingredients: ["200g Iogurte Skyr Natural", "100g Morangos frescos", "1 colher sopa Mel puro", "15g Granola Proteica"],
+                desc: "Absorção ultra-rápida pós-treino para regenerar as fibras do glúteo máximo e interromper o catabolismo."
+            },
+            {
+                id: 3,
+                title: "Omelete de Salmão Fumado & Espinafres",
+                category: "post",
+                categoryLabel: "Pós-Treino 🍑",
+                img: "https://images.unsplash.com/photo-1510693206972-df098062cb71?auto=format&fit=crop&q=80&w=600",
+                calories: "380 kcal",
+                protein: "36g",
+                carbs: "4g",
+                fats: "22g",
+                prepTime: "10 min",
+                ingredients: ["3 Ovos inteiros", "50g Salmão Fumado", "1 mão cheia Espinafres", "Azeite Virgem Extra"],
+                desc: "Rico em ómega-3 anti-inflamatório para acelerar a recuperação da dor muscular intensa (DOMS)."
+            },
+            {
+                id: 4,
+                title: "Batido de Manteiga de Amendoim & Cacau",
+                category: "snack",
+                categoryLabel: "Snack 🍫",
+                img: "https://images.unsplash.com/photo-1553787499-6f9133860278?auto=format&fit=crop&q=80&w=600",
+                calories: "310 kcal",
+                protein: "26g",
+                carbs: "24g",
+                fats: "12g",
+                prepTime: "3 min",
+                ingredients: ["250ml Leite de Amêndoa sem açúcar", "1 scoop Whey Cacau", "1 colher sopa Manteiga de Amendoim 100%", "Gelo"],
+                desc: "Snack cremoso e calórico ideal para quem procura aumentar o volume dos glúteos com gorduras saudáveis."
+            },
+            {
+                id: 5,
+                title: "Tofu Salteado Crocante com Abacate",
+                category: "veggie",
+                categoryLabel: "Vegetariano 🌱",
+                img: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600",
+                calories: "360 kcal",
+                protein: "25g",
+                carbs: "12g",
+                fats: "22g",
+                prepTime: "15 min",
+                ingredients: ["150g Tofu Firme em cubos", "1/2 Abacate fatiado", "Molho de Soja reduzido em sódio", "Sementes de Sésamo"],
+                desc: "Proteína vegetal de alto valor biológico com gorduras monoinsaturadas essenciais."
+            },
+            {
+                id: 6,
+                title: "Waffles Proteicos de Cacau & Bagas",
+                category: "snack",
+                categoryLabel: "Snack 🍫",
+                img: "https://images.unsplash.com/photo-1562376552-0d160a2f238d?auto=format&fit=crop&q=80&w=600",
+                calories: "320 kcal",
+                protein: "24g",
+                carbs: "38g",
+                fats: "5g",
+                prepTime: "8 min",
+                ingredients: ["40g Farinha de Aveia", "1/2 scoop Proteína de Chocolate", "1 Clara de Ovo", "Bagas mistas para topping"],
+                desc: "Mata o desejo por doces sem sair do plano nutricional."
+            }
+        ];
+
+        const mobilityDB = [
+            {
+                title: "Libertação Miofascial de Glúteo (Com Bola/Rolo)",
+                img: "https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600",
+                duration: "2 min cada lado",
+                desc: "Senta-te sobre uma bola de ténis ou rolo de espuma e pressiona os pontos de tensão no glúteo médio para aliviar contraturas pós-treino."
+            },
+            {
+                title: "Rotação Ativa de Anca (90/90 Hip Opener)",
+                img: "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&q=80&w=600",
+                duration: "10 rotações lentamente",
+                desc: "Aumenta a amplitude articular da anca para conseguires descer bem fundo no agachamento sem dobrar a lombar."
+            }
+        ];
+
+        let workoutStats = JSON.parse(localStorage.getItem('fitglute_stats')) || {
+            streak: 4,
+            completed: 14,
+            calories: 4200,
+            completedDates: []
+        };
+
+        let customWorkouts = JSON.parse(localStorage.getItem('fitglute_custom')) || [];
+        let vaultPhotos = JSON.parse(localStorage.getItem('fitglute_vault')) || [];
+
+        // Exercise Database
+        const exercisesDB = [
+            {
+                id: 'hip-thrust',
+                name: 'Hip Thrust (Elevação de Ancas)',
+                muscle: 'Glúteo Máximo & Isquiotibiais',
+                reps: '4 Séries x 15 Repetições (Pausa 2s)',
+                img: 'https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&q=80&w=600',
+                desc: 'Apoia as escápulas num sofá ou cadeira. Contrai os glúteos com força máxima no topo da elevação.'
+            },
+            {
+                id: 'bulgarian-split',
+                name: 'Agachamento Búlgaro',
+                muscle: 'Glúteo Médio & Quadríceps',
+                reps: '3 Séries x 12 Rep. (Cada Perna)',
+                img: 'https://images.unsplash.com/photo-1434682881908-b43d0467b798?auto=format&fit=crop&q=80&w=600',
+                desc: 'Pé traseiro elevado. Inclina ligeiramente o tronco para a frente para focar 100% no glúteo.'
+            },
+            {
+                id: 'sumo-squat',
+                name: 'Agachamento Sumô Profundo',
+                muscle: 'Glúteos & Adutores Coxa',
+                reps: '4 Séries x 15 Repetições',
+                img: 'https://images.unsplash.com/photo-1566241142559-40e1dab266c6?auto=format&fit=crop&q=80&w=600',
+                desc: 'Pés abertos a 45 graus. Desce bem fundo mantendo a coluna ereta e joelhos para fora.'
+            },
+            {
+                id: 'donkey-kick',
+                name: 'Coice de Glúteo no Chão',
+                muscle: 'Glúteo Máximo',
+                reps: '3 Séries x 20 Rep. (Cada Perna)',
+                img: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&q=80&w=600',
+                desc: 'Em 4 apoios, empurra a sola do pé em direção ao teto sem arquear a zona lombar.'
+            },
+            {
+                id: 'fire-hydrant',
+                name: 'Fire Hydrant (Lateral)',
+                muscle: 'Glúteo Médio (Desenho Lateral)',
+                reps: '3 Séries x 18 Repetições',
+                img: 'https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?auto=format&fit=crop&q=80&w=600',
+                desc: 'Elevação lateral da perna a 90 graus. Fundamental para preencher as ancas laterais.'
+            },
+            {
+                id: 'romanian-deadlift',
+                name: 'Peso Morto Romeno',
+                muscle: 'Isquiotibiais & Glúteo',
+                reps: '4 Séries x 12 Repetições',
+                img: 'https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?auto=format&fit=crop&q=80&w=600',
+                desc: 'Empurra a anca para trás mantendo os joelhos semi-fletidos até sentir o alongamento posterior.'
+            }
+        ];
+
+        /* ==================== INIT ==================== */
+        window.onload = function() {
+            renderExerciseLibrary();
+            renderNutritionCards('all');
+            renderMobilityCards();
+            renderSavedCustomWorkouts();
+            renderCalendar();
+            updateStatsUI();
+            addCustomExerciseRow();
+        }
+
+        /* ==================== EXPANDED RENDERERS ==================== */
+        function renderNutritionCards(filter = 'all') {
+            const container = document.getElementById('nutrition-cards-container');
+            const items = filter === 'all' ? nutritionDB : nutritionDB.filter(r => r.category === filter);
+            
+            container.innerHTML = items.map(item => `
+                <div class="glass-card rounded-3xl overflow-hidden border shadow-sm space-y-4 p-5 flex flex-col justify-between">
+                    <div class="space-y-3">
+                        <div class="relative h-44 rounded-2xl overflow-hidden">
+                            <img src="${item.img}" class="w-full h-full object-cover">
+                            <span class="absolute top-3 left-3 px-3 py-1 bg-slate-950/80 backdrop-blur-md text-brand-400 font-extrabold text-[10px] rounded-full uppercase tracking-wider">${item.categoryLabel}</span>
+                            <span class="absolute bottom-3 right-3 px-3 py-1 bg-slate-950/80 backdrop-blur-md text-white font-extrabold text-[10px] rounded-full"><i class="fa-regular fa-clock"></i> ${item.prepTime}</span>
+                        </div>
+                        <div>
+                            <h4 class="font-black text-base text-slate-900 dark:text-white">${item.title}</h4>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mt-1 leading-relaxed">${item.desc}</p>
+                        </div>
+
+                        <!-- Macros Badge Row -->
+                        <div class="grid grid-cols-4 gap-2 text-center py-2 bg-slate-100 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800">
+                            <div><span class="block text-[9px] text-slate-400 font-bold uppercase">Kcal</span><span class="text-xs font-black text-slate-900 dark:text-white">${item.calories}</span></div>
+                            <div><span class="block text-[9px] text-brand-500 font-bold uppercase">Proteína</span><span class="text-xs font-black text-brand-500">${item.protein}</span></div>
+                            <div><span class="block text-[9px] text-slate-400 font-bold uppercase">Carbs</span><span class="text-xs font-black text-slate-900 dark:text-white">${item.carbs}</span></div>
+                            <div><span class="block text-[9px] text-slate-400 font-bold uppercase">Gordura</span><span class="text-xs font-black text-slate-900 dark:text-white">${item.fats}</span></div>
+                        </div>
+
+                        <!-- Ingredient Checklist -->
+                        <div class="space-y-1 pt-1">
+                            <span class="text-[10px] font-extrabold text-slate-400 uppercase tracking-wider block">Ingredientes:</span>
+                            <ul class="text-xs text-slate-600 dark:text-slate-300 space-y-1">
+                                ${item.ingredients.map(ing => `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-[10px] text-brand-500"></i> ${ing}</li>`).join('')}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterRecipes(cat) {
+            document.querySelectorAll('.recipe-cat-btn').forEach(btn => {
+                btn.className = "recipe-cat-btn px-4 py-2 rounded-2xl font-extrabold text-xs transition glass-card text-slate-500 hover:text-brand-500";
+            });
+            event.target.className = "recipe-cat-btn px-4 py-2 rounded-2xl font-extrabold text-xs transition bg-brand-600 text-white shadow-md";
+            renderNutritionCards(cat);
+        }
+
+        function renderMobilityCards() {
+            const container = document.getElementById('mobility-cards-container');
+            container.innerHTML = mobilityDB.map(m => `
+                <div class="glass-card rounded-3xl p-5 border shadow-sm space-y-3">
+                    <img src="${m.img}" class="w-full h-40 rounded-2xl object-cover">
+                    <div class="flex justify-between items-center">
+                        <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">${m.title}</h4>
+                        <span class="text-[10px] font-bold text-brand-500 bg-brand-500/10 px-2.5 py-1 rounded-full">${m.duration}</span>
+                    </div>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">${m.desc}</p>
+                </div>
+            `).join('');
+        }
+
+        function toggleMacroCalcModal() {
+            document.getElementById('modal-macro-calc').classList.toggle('hidden');
+        }
+
+        function calculateMacros() {
+            const weight = parseFloat(document.getElementById('calc-weight').value) || 60;
+            const goal = document.getElementById('calc-goal').value;
+            const factor = goal === 'gain' ? 2.0 : 1.8;
+            const totalProtein = Math.round(weight * factor);
+
+            document.getElementById('res-protein').innerText = `${totalProtein}g / dia`;
+            document.getElementById('calc-results').classList.remove('hidden');
+        }
+
+        /* ==================== APP LOCK PIN LOGIC ==================== */
+        function pressPin(num) {
+            if (currentEnteredPin.length < 4) {
+                currentEnteredPin += num;
+                playBeep(800, 0.05);
+                updatePinDots();
+                if (currentEnteredPin.length === 4) {
+                    verifyAppPin();
+                }
+            }
+        }
+
+        function deletePin() {
+            currentEnteredPin = currentEnteredPin.slice(0, -1);
+            updatePinDots();
+        }
+
+        function clearPin() {
+            currentEnteredPin = "";
+            updatePinDots();
+        }
+
+        function updatePinDots() {
+            const dots = document.querySelectorAll('#pin-dots div');
+            dots.forEach((dot, index) => {
+                if (index < currentEnteredPin.length) {
+                    dot.className = "w-4 h-4 rounded-full bg-brand-500 shadow-lg shadow-brand-500/50 scale-110 transition-all duration-200";
+                } else {
+                    dot.className = "w-4 h-4 rounded-full border-2 border-brand-500/50 bg-transparent transition-all duration-200";
+                }
+            });
+        }
+
+        function verifyAppPin() {
+            if (currentEnteredPin === APP_PIN) {
+                playBeep(1200, 0.2);
+                document.getElementById('app-lock-screen').classList.add('opacity-0');
+                setTimeout(() => {
+                    document.getElementById('app-lock-screen').classList.add('hidden');
+                    document.getElementById('main-app').classList.remove('hidden');
+                }, 400);
+            } else {
+                playBeep(300, 0.3);
+                document.getElementById('pin-error').classList.remove('hidden');
+                setTimeout(() => {
+                    clearPin();
+                    document.getElementById('pin-error').classList.add('hidden');
+                }, 1000);
+            }
+        }
+
+        /* ==================== VAULT PIN LOGIC ==================== */
+        function openVaultLockModal() {
+            currentVaultPin = "";
+            updateVaultDots();
+            document.getElementById('modal-vault-lock').classList.remove('hidden');
+        }
+
+        function closeVaultLockModal() {
+            document.getElementById('modal-vault-lock').classList.add('hidden');
+        }
+
+        function pressVaultPin(num) {
+            if (currentVaultPin.length < 4) {
+                currentVaultPin += num;
+                playBeep(800, 0.05);
+                updateVaultDots();
+                if (currentVaultPin.length === 4) {
+                    verifyVaultPin();
+                }
+            }
+        }
+
+        function clearVaultPin() {
+            currentVaultPin = "";
+            updateVaultDots();
+        }
+
+        function updateVaultDots() {
+            const dots = document.querySelectorAll('#vault-dots div');
+            dots.forEach((dot, index) => {
+                if (index < currentVaultPin.length) {
+                    dot.className = "w-4 h-4 rounded-full bg-brand-500 shadow-md scale-110 transition-all";
+                } else {
+                    dot.className = "w-4 h-4 rounded-full border-2 border-brand-500/50";
+                }
+            });
+        }
+
+        function verifyVaultPin() {
+            if (currentVaultPin === VAULT_CODE) {
+                playBeep(1200, 0.2);
+                closeVaultLockModal();
+                renderVaultGallery();
+                document.getElementById('modal-vault-content').classList.remove('hidden');
+            } else {
+                playBeep(300, 0.3);
+                document.getElementById('vault-error').classList.remove('hidden');
+                setTimeout(() => {
+                    clearVaultPin();
+                    document.getElementById('vault-error').classList.add('hidden');
+                }, 1000);
+            }
+        }
+
+        function closeVaultContentModal() {
+            document.getElementById('modal-vault-content').classList.add('hidden');
+        }
+
+        function uploadVaultPhoto() {
+            const date = document.getElementById('vault-photo-date').value || new Date().toISOString().split('T')[0];
+            const weight = document.getElementById('vault-weight').value || '--';
+            const gluteCm = document.getElementById('vault-glute-cm').value || '--';
+            const angle = document.getElementById('vault-photo-angle').value;
+            const fileInput = document.getElementById('vault-file-input');
+
+            if (fileInput.files && fileInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const newEntry = {
+                        id: Date.now(),
+                        date: date,
+                        weight: weight,
+                        gluteCm: gluteCm,
+                        angle: angle,
+                        img: e.target.result
+                    };
+                    vaultPhotos.unshift(newEntry);
+                    localStorage.setItem('fitglute_vault', JSON.stringify(vaultPhotos));
+                    renderVaultGallery();
+                    fileInput.value = '';
+                };
+                reader.readAsDataURL(fileInput.files[0]);
+            } else {
+                alert('Seleciona uma fotografia primeiro.');
+            }
+        }
+
+        function renderVaultGallery() {
+            const container = document.getElementById('vault-gallery-grid');
+            if (vaultPhotos.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-xs text-slate-400 italic text-center py-6">Nenhuma foto guardada no cofre seguro.</p>`;
+                return;
+            }
+            container.innerHTML = vaultPhotos.map(p => `
+                <div class="bg-slate-900 rounded-2xl overflow-hidden border border-slate-800 space-y-2 p-2">
+                    <img src="${p.img}" class="w-full h-36 object-cover rounded-xl">
+                    <div class="text-[11px] space-y-0.5 px-1">
+                        <div class="flex justify-between font-bold text-brand-400">
+                            <span>${p.angle}</span>
+                            <span>${p.date}</span>
+                        </div>
+                        <p class="text-slate-300 font-semibold">${p.weight} kg • ${p.gluteCm} cm Glúteo</p>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /* ==================== NAVIGATION TAB SWITCHING ==================== */
+        function switchTab(tabId) {
+            currentTab = tabId;
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.getElementById(`tab-${tabId}`).classList.remove('hidden');
+
+            // Mobile active state
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('text-brand-600', 'dark:text-brand-400');
+                btn.classList.add('text-slate-400');
+            });
+            const activeNav = document.getElementById(`nav-${tabId}`);
+            if(activeNav) {
+                activeNav.classList.remove('text-slate-400');
+                activeNav.classList.add('text-brand-600', 'dark:text-brand-400');
+            }
+
+            // Desktop active state
+            document.querySelectorAll('.snav-btn').forEach(btn => {
+                btn.classList.remove('text-brand-600', 'dark:text-brand-400', 'bg-brand-50', 'dark:bg-brand-900/20');
+                btn.classList.add('text-slate-500');
+            });
+            const activeSnav = document.getElementById(`snav-${tabId}`);
+            if(activeSnav) {
+                activeSnav.classList.remove('text-slate-500');
+                activeSnav.classList.add('text-brand-600', 'dark:text-brand-400', 'bg-brand-50', 'dark:bg-brand-900/20');
+            }
+        }
+
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+        }
+
+        /* ==================== WORKOUT TIMER & PLAYER ==================== */
+        let activeRoutineIndex = 0;
+        let activeRoutineExercises = [];
+        let timerInterval = null;
+        let timerSeconds = 45;
+        let isTimerPaused = false;
+
+        function startRoutine(type) {
+            activeRoutineExercises = [...exercisesDB];
+            activeRoutineIndex = 0;
+            openWorkoutExercise();
+            document.getElementById('modal-workout').classList.remove('hidden');
+        }
+
+        function openWorkoutExercise() {
+            const current = activeRoutineExercises[activeRoutineIndex];
+            document.getElementById('workout-current-name').innerText = current.name;
+            document.getElementById('workout-current-muscle').innerText = current.muscle;
+            document.getElementById('workout-current-reps').innerText = current.reps;
+            document.getElementById('workout-current-instructions').innerText = current.desc;
+            document.getElementById('workout-current-img').src = current.img;
+
+            timerSeconds = 45;
+            updateTimerClockDisplay();
+            startTimer();
+        }
+
+        function startTimer() {
+            clearInterval(timerInterval);
+            isTimerPaused = false;
+            document.getElementById('btn-timer-toggle').innerText = "Pausar";
+            timerInterval = setInterval(() => {
+                if(!isTimerPaused) {
+                    timerSeconds--;
+                    if(timerSeconds <= 3 && timerSeconds > 0) playBeep(900, 0.1);
+                    updateTimerClockDisplay();
+                    if(timerSeconds <= 0) {
+                        playBeep(1400, 0.3);
+                        clearInterval(timerInterval);
+                        nextWorkoutExercise();
+                    }
+                }
+            }, 1000);
+        }
+
+        function toggleWorkoutTimer() {
+            isTimerPaused = !isTimerPaused;
+            document.getElementById('btn-timer-toggle').innerText = isTimerPaused ? "Retomar" : "Pausar";
+        }
+
+        function updateTimerClockDisplay() {
+            const mins = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+            const secs = (timerSeconds % 60).toString().padStart(2, '0');
+            document.getElementById('workout-timer-clock').innerText = `${mins}:${secs}`;
+        }
+
+        function nextWorkoutExercise() {
+            clearInterval(timerInterval);
+            if (activeRoutineIndex < activeRoutineExercises.length - 1) {
+                activeRoutineIndex++;
+                openWorkoutExercise();
+            } else {
+                closeWorkoutModal();
+                workoutStats.completed += 1;
+                workoutStats.calories += 320;
+                workoutStats.streak += 1;
+                const todayStr = new Date().toISOString().split('T')[0];
+                if(!workoutStats.completedDates.includes(todayStr)) {
+                    workoutStats.completedDates.push(todayStr);
+                }
+                localStorage.setItem('fitglute_stats', JSON.stringify(workoutStats));
+                updateStatsUI();
+                alert('🏆 TREINO CONCLUÍDO COM SUCESSO! Glúteos ativados no máximo!');
+            }
+        }
+
+        function closeWorkoutModal() {
+            clearInterval(timerInterval);
+            document.getElementById('modal-workout').classList.add('hidden');
+        }
+
+        function updateStatsUI() {
+            document.getElementById('stat-streak').innerText = `${workoutStats.streak} Dias`;
+            document.getElementById('stat-completed').innerText = workoutStats.completed;
+            document.getElementById('stat-calories').innerText = `${workoutStats.calories} kcal`;
+        }
+
+        /* ==================== RENDERING DYNAMIC CARDS ==================== */
+        function renderExerciseLibrary() {
+            const grid = document.getElementById('exercise-library-grid');
+            grid.innerHTML = exercisesDB.map(ex => `
+                <div class="glass-card rounded-2xl overflow-hidden border shadow-sm group">
+                    <img src="${ex.img}" class="w-full h-32 object-cover group-hover:scale-105 transition duration-300">
+                    <div class="p-3">
+                        <h4 class="font-extrabold text-xs text-slate-900 dark:text-white truncate">${ex.name}</h4>
+                        <span class="text-[10px] font-bold text-brand-500 uppercase tracking-wider block mt-1">${ex.muscle}</span>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        /* ==================== CUSTOM WORKOUT FORM ==================== */
+        function addCustomExerciseRow() {
+            const container = document.getElementById('custom-exercises-container');
+            const div = document.createElement('div');
+            div.className = "flex gap-2 items-center";
+            div.innerHTML = `
+                <input type="text" placeholder="Nome do Exercício" required class="flex-1 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-xs font-semibold">
+                <input type="text" placeholder="Séries x Reps" required class="w-32 px-4 py-3 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-xs font-semibold">
+                <button type="button" onclick="this.parentElement.remove()" class="text-rose-500 p-2 hover:scale-110 transition"><i class="fa-solid fa-trash-can"></i></button>
+            `;
+            container.appendChild(div);
+        }
+
+        function saveCustomWorkout(e) {
+            e.preventDefault();
+            const title = document.getElementById('custom-title').value;
+            const rows = document.querySelectorAll('#custom-exercises-container > div');
+            const exercises = [];
+            rows.forEach(r => {
+                const inputs = r.querySelectorAll('input');
+                if(inputs[0].value) {
+                    exercises.push({ name: inputs[0].value, reps: inputs[1].value });
+                }
+            });
+
+            const workout = { id: Date.now(), title: title, exercises: exercises };
+            customWorkouts.push(workout);
+            localStorage.setItem('fitglute_custom', JSON.stringify(customWorkouts));
+            renderSavedCustomWorkouts();
+            document.getElementById('custom-workout-form').reset();
+            alert('Treino personalizado guardado com sucesso!');
+        }
+
+        function renderSavedCustomWorkouts() {
+            const container = document.getElementById('saved-custom-workouts');
+            if (customWorkouts.length === 0) {
+                container.innerHTML = `<p class="text-xs text-slate-400 italic">Nenum treino criado por ti ainda.</p>`;
+                return;
+            }
+            container.innerHTML = customWorkouts.map(w => `
+                <div class="glass-card p-4 rounded-2xl border shadow-sm flex justify-between items-center">
+                    <div>
+                        <h4 class="font-extrabold text-sm text-slate-900 dark:text-white">${w.title}</h4>
+                        <p class="text-xs text-slate-400">${w.exercises.length} Exercícios</p>
+                    </div>
+                    <button onclick="startCustomRoutine(${w.id})" class="px-4 py-2 bg-brand-600 text-white font-extrabold text-xs rounded-xl shadow hover:bg-brand-700 transition">
+                        Treinar <i class="fa-solid fa-play text-[10px] ml-1"></i>
+                    </button>
+                </div>
+            `).join('');
+        }
+
+        function startCustomRoutine(id) {
+            const w = customWorkouts.find(item => item.id === id);
+            if(w) {
+                activeRoutineExercises = w.exercises.map(ex => ({
+                    name: ex.name,
+                    muscle: 'Personalizado',
+                    reps: ex.reps,
+                    desc: 'Foco na postura e contração intencional.',
+                    img: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&q=80&w=600'
+                }));
+                activeRoutineIndex = 0;
+                openWorkoutExercise();
+                document.getElementById('modal-workout').classList.remove('hidden');
+            }
+        }
+
+        /* ==================== GEMINI AI INTEGRATION ==================== */
+        async function sendChatMessage(e) {
+            e.preventDefault();
+            const input = document.getElementById('chat-input');
+            const message = input.value.trim();
+            if(!message) return;
+
+            appendMessage('user', message);
+            input.value = '';
+
+            const typingId = appendTypingIndicator();
+
+            try {
+                const systemPrompt = "Tu és a treinadora GymDi AI, especialista em hipertrofia de glúteos e pernas em casa. Responde sempre em português europeu de forma empática, motivadora e direta.";
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent?key=${apiKey}`;
+
+                const response = await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: message }] }],
+                        systemInstruction: { parts: [{ text: systemPrompt }] }
+                    })
+                });
+
+                const data = await response.json();
+                removeTypingIndicator(typingId);
+
+                const replyText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Vamos continuar focadas! Lembra-te de contrair o glúteo no topo de cada repetição.";
+                appendMessage('ai', replyText);
+            } catch (err) {
+                removeTypingIndicator(typingId);
+                appendMessage('ai', "Excelente foco! Mantém a cadência controlada na descida para maximizar o ganho de massa muscular.");
+            }
+        }
+
+        function sendQuickPrompt(txt) {
+            document.getElementById('chat-input').value = txt;
+            sendChatMessage(new Event('submit'));
+        }
+
+        function appendMessage(sender, text) {
+            const container = document.getElementById('chat-messages');
+            const div = document.createElement('div');
+            div.className = sender === 'user' ? "flex justify-end max-w-[85%] ml-auto" : "flex gap-3 max-w-[85%]";
+            div.innerHTML = `
+                <div class="${sender === 'user' ? 'bg-brand-600 text-white font-semibold' : 'glass-card border text-slate-800 dark:text-slate-200'} p-4 rounded-2xl">
+                    ${text}
+                </div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function appendTypingIndicator() {
+            const container = document.getElementById('chat-messages');
+            const id = 'typing-' + Date.now();
+            const div = document.createElement('div');
+            div.id = id;
+            div.className = "flex gap-3 max-w-[85%]";
+            div.innerHTML = `
+                <div class="glass-card p-3 rounded-2xl text-slate-400 text-xs italic border">
+                    GymDi AI está a analisar...
+                </div>
+            `;
+            container.appendChild(div);
+            container.scrollTop = container.scrollHeight;
+            return id;
+        }
+
+        function removeTypingIndicator(id) {
+            const el = document.getElementById(id);
+            if(el) el.remove();
+        }
+
+        /* ==================== HYDRATION & CALENDAR ==================== */
+        function addWater(amount) {
+            waterDrank = Math.min(waterGoal, waterDrank + amount);
+            updateWaterUI();
+        }
+
+        function resetWater() {
+            waterDrank = 0;
+            updateWaterUI();
+        }
+
+        function updateWaterUI() {
+            const pct = Math.round((waterDrank / waterGoal) * 100);
+            document.getElementById('water-bar').style.width = `${pct}%`;
+            document.getElementById('water-text').innerText = `${waterDrank.toFixed(1)}L / ${waterGoal}L`;
+        }
+
+        function renderCalendar() {
+            const grid = document.getElementById('calendar-days-grid');
+            grid.innerHTML = '';
+            for(let i = 1; i <= 30; i++) {
+                const dayDiv = document.createElement('div');
+                const isCompleted = workoutStats.completedDates.includes(`2026-11-${i.toString().padStart(2, '0')}`);
+                dayDiv.className = `h-11 rounded-2xl flex items-center justify-center font-extrabold text-xs transition ${isCompleted ? 'bg-brand-500 text-white shadow-lg shadow-brand-500/40 scale-105' : 'glass-card text-slate-600 dark:text-slate-300'}`;
+                dayDiv.innerText = i;
+                grid.appendChild(dayDiv);
+            }
+        }
+
+        function prevMonth(){}
+        function nextMonth(){}
+
+        /* ==================== USER PROFILE & THEMES ==================== */
+        function updateProfileName(name) {
+            document.getElementById('nav-user-name').innerText = name;
+        }
+
+        function updateProfilePhoto(e) {
+            if (e.target.files && e.target.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function(ev) {
+                    document.getElementById('profile-img-preview').src = ev.target.result;
+                    document.getElementById('nav-user-photo').src = ev.target.result;
+                };
+                reader.readAsDataURL(e.target.files[0]);
+            }
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.getElementById('dark-icon');
+            if(document.documentElement.classList.contains('dark')) {
+                icon.className = "fa-solid fa-sun text-amber-400 text-base";
+            } else {
+                icon.className = "fa-solid fa-moon text-slate-600 text-base";
+            }
+        }
+
+        function setThemeColor(name, color500, color600) {
+            document.documentElement.style.setProperty('--color-brand-500', color500);
+            document.documentElement.style.setProperty('--color-brand-600', color600);
+            alert(`Tema visual alterado com sucesso!`);
+        }
+    </script>
+</body>
+</html>
